@@ -7,8 +7,9 @@ sudo showkey > ./logger.txt   # captures all the characters entered and stores i
 
 
 python myscript.py         # runs the python script and decodes all the characters using logger.txt and keymaps.txt
+						   # and stores the results in output.log
 
 
-gedit output.log          # Shows the output file with the entered characters  
+  
 
 
