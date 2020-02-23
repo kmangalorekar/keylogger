@@ -35,7 +35,7 @@ klist=kmlist.keys()
 #print klist
 
 kllist=[]
-
+st=0
 for j in keylogger_linelist:
 	j=j.split()
 
@@ -43,18 +43,32 @@ for j in keylogger_linelist:
 
 
 	if l==3:
-		if j[2]=='release':
-			if j[1]=='42':
+                if j[1]=='14'and len(kllist)!=0:
+                    kllist.pop()
+
+
+		elif j[2]=='release':
+                        if j[1]=='42' and st==1:
 				kllist.append(j[1])
+                                st = 0
 				kllist.append('<released>')
 
 			else:
 				continue
 		else:
-			kllist.append(j[1])
+                        if j[1]=='42' and st==1:
+                            continue
 			
-			if j[1]=='42':
-				kllist.append('<pressed>')
+			elif j[1]=='42'and st==0:	
+			    kllist.append(j[1])
+                            kllist.append('<pressed>')
+                            st=1
+                        
+                        elif j[1]!='42':
+			    kllist.append(j[1])
+                        
+                        else:
+                            continue
 
 
 #kllist is generated with codes of input from logger.txt
